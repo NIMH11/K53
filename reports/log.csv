@@ -1,0 +1,5 @@
+timestamp,id,question,marked_correct_index,marked_correct_text,selected_correct_index,selected_correct_letter,selected_correct_text,reason,details,user_agent
+2025-11-17T08:00:15.055922,r2,"When you want to change lanes and drive from one lane to the other you must:
+(i) Only do it when it is safe to do so
+(ii) Switch on your flickers in time to show what you are going to do
+(iii) Use the mirrors of your vehicle to ensure that you know of other traffic around you",1,All of the above are correct,0,A,Only (i) and (ii) are correct,Wrong answer,,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
