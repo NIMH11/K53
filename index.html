@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>K53 Rules Reviewer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>K53 Rules – Reviewer</h1>
+    <div class="controls">
+      <input id="search" type="search" placeholder="Search text or ID…" />
+      <label class="chk"><input id="showImages" type="checkbox" checked /> Show images</label>
+      <label class="chk"><input id="showExplanations" type="checkbox" /> Show explanations</label>
+      <span id="count" class="muted"></span>
+    </div>
+    <div id="error" class="error hidden"></div>
+  </header>
+
+  <main id="app">
+    <p class="loading">Loading questions…</p>
+  </main>
+
+  <dialog id="reportDialog">
+    <form method="dialog" id="reportForm">
+      <h3>Report an issue</h3>
+      <p id="reportQuestionMeta"></p>
+
+      <fieldset class="radio-group">
+        <legend>Select the correct answer</legend>
+        <div id="answerRadios" class="radio-row"></div>
+      </fieldset>
+
+      <label>Reason<br>
+        <select id="reportReason" required>
+          <option value="Wrong answer">Wrong answer marked</option>
+          <option value="Bad wording">Bad/unclear wording</option>
+          <option value="Image missing">Image missing/incorrect</option>
+          <option value="Other">Other</option>
+        </select>
+      </label>
+      <label>Details (optional)<br>
+        <textarea id="reportDetails" rows="4" placeholder="Add any notes…"></textarea>
+      </label>
+      <div class="report-actions">
+        <button type="submit" value="save">Save report</button>
+        <button value="cancel">Close</button>
+      </div>
+      <p class="muted small">Reports are saved locally and also written to the server's <code>reports/</code> folder.</p>
+    </form>
+  </dialog>
+
+  <footer>
+    <p>JSON is auto-loaded from <code>rules_questions.json</code>. Run with <code>python server.py</code> so reports are saved into <code>reports/</code>.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
