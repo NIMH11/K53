@@ -2,7 +2,8 @@ import os
 import json
 import csv
 from datetime import datetime
-from flask import Flask, send_from_directory, request, jsonify
+from flask import Flask, send_from_directory, request, jsonify, send_file
+
 
 # Static files live in project root
 app = Flask(__name__, static_folder='.', static_url_path='')
@@ -82,7 +83,18 @@ def report():
             writer.writeheader()
         writer.writerow(row)
 
-    return jsonify({'ok': True, 'saved': os.path.basename(json_path)})
+    return jsonify({'ok': True, 'saved': os.path.basename(json_path)})    @app.route('/download-reports')
+    def download_reports():
+        log_path = os.path.join(REPORT_DIR, 'log.csv')
+        if not os.path.exists(log_path):
+            return "No reports yet", 404
+        return send_file(
+            log_path,
+            mimetype='text/csv',
+            as_attachment=True,
+            download_name='reports.csv'
+        )
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
